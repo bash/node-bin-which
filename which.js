@@ -1,8 +1,9 @@
+#!/usr/bin/env node
+
 'use strict';
 
 var pathUtil = require('path'),
-    fs = require('fs'),
-    util = require('util');
+    fs = require('fs');
 
 /**
  *
