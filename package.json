@@ -1,0 +1,11 @@
+{
+  "name": "bin-which",
+  "version": "0.0.1",
+  "description": "node equivalent of the `which` command",
+  "author": "Ruben Schmidmeister <ruben.schmidmeister@icloud.com>",
+  "license": "MIT",
+  "dependencies": {},
+  "bin": {
+    "which": "which.js"
+  }
+}
