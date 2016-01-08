@@ -1,4 +1,5 @@
-langauge: node_js
+---
+language: node_js
 
 node_js:
 - latest
@@ -12,7 +13,6 @@ cache:
     - node_modules
 
 before_script:
-  - npm install
   - "export PATH=$PATH:node_modules/.bin"
 
 deploy:
