@@ -1,0 +1,15 @@
+langauge: node_js
+
+node_js:
+- latest
+- "0.10.24"
+
+script:
+- npm coverage
+
+deploy:
+  provider: npm
+  email: ruben.schmidmeister@icloud.com
+  api_key: 49e3ba7b-5148-43ed-b2ec-2c2e6131a03f
+  on:
+    tags: true
