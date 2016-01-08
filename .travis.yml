@@ -5,7 +5,11 @@ node_js:
 - "0.10.24"
 
 script:
-- npm coverage
+- npm run coverage
+
+cache:
+  directories:
+    - node_modules
 
 deploy:
   provider: npm
