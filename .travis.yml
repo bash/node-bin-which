@@ -12,6 +12,7 @@ cache:
     - node_modules
 
 before_script:
+  - npm install
   - "export PATH=$PATH:node_modules/.bin"
 
 deploy:
