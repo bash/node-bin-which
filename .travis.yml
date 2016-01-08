@@ -1,0 +1,24 @@
+---
+language: node_js
+
+node_js:
+- "v5.4.0"
+- "v0.10.24"
+
+script:
+- npm run coverage
+
+cache:
+  directories:
+    - node_modules
+
+before_script:
+  - "export PATH=$PATH:node_modules/.bin"
+
+deploy:
+  provider: npm
+  email: ruben.schmidmeister@icloud.com
+  api_key: 49e3ba7b-5148-43ed-b2ec-2c2e6131a03f
+  on:
+    tags: true
+    branch: master
