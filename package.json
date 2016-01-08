@@ -1,6 +1,6 @@
 {
   "name": "bin-which",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "node equivalent of the `which` command",
   "author": "Ruben Schmidmeister <ruben.schmidmeister@icloud.com>",
   "homepage": "https://github.com/bash/node-bin-which",
