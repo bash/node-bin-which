@@ -20,5 +20,4 @@ deploy:
   email: ruben.schmidmeister@icloud.com
   api_key: 49e3ba7b-5148-43ed-b2ec-2c2e6131a03f
   on:
-    tags: true
     branch: master
