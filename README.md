@@ -13,5 +13,9 @@ $ npkg install bin-which
 ## Usage
 
 ```
-which [-a] PROGRAM
+which [-al] PROGRAM
 ```
+
+## Arguments
+- -a Output all paths for every one the given programs
+- -l Output a list instead of key - value pairs
