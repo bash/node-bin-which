@@ -2,6 +2,9 @@
 
 [![Build Status](https://travis-ci.org/bash/node-bin-which.svg)](https://travis-ci.org/bash/node-bin-which)
 [![Coverage Status](https://coveralls.io/repos/bash/node-bin-which/badge.svg?branch=master&service=github)](https://coveralls.io/github/bash/node-bin-which?branch=master)
+[![npm version](https://badge.fury.io/js/bin-which.svg)](https://badge.fury.io/js/bin-which)
+[![dependencies](https://david-dm.org/bash/node-bin-which.svg)](https://david-dm.org/bash/node-bin-which)
+
 
 <a href="http://nodeos.github.io"><img src="http://i.imgur.com/pIJu2TS.png" width=200 height=79/></a>
 
