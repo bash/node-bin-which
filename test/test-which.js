@@ -24,3 +24,10 @@ describe('which()', function () {
         assert.deepEqual([], which('this-does-not-exists', env));
     });
 });
+
+describe('_resolve()', function(){
+   it('resolves ~ to the users home directory', function(){
+       assert.equal(__dirname, which._resolve('~', { HOME: __dirname }));
+       assert.equal(__dirname + '/test-which.js', which._resolve('~/test-which.js', { HOME: __dirname }));
+   });
+});
