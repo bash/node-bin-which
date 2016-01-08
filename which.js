@@ -2,8 +2,7 @@
 
 'use strict';
 
-var pathUtil = require('path'),
-    fs = require('fs');
+var which = require('./lib/which');
 
 /**
  *
@@ -26,53 +25,73 @@ function parseArgv(argv) {
 
 /**
  *
- * @param {string} path
- * @returns {string}
+ * @template T
+ * @param {Array<T>} a
+ * @param {Array<T>} b
+ *
+ * @returns {Array<T>}
  */
-function resolve(path) {
-    if (path[0] === '~') {
-        return pathUtil.join(process.env.HOME, path.slice(1));
-    }
-
-    return pathUtil.resolve(process.env.PWD, path);
+function concat(a, b) {
+    return [].concat(a, b);
 }
 
 /**
  *
- * @param {string} path
+ * @param {*} value
  * @returns {boolean}
  */
-function exists(path) {
-    try {
-        fs.statSync(path);
-        return true;
-    } catch (e) {
-        return false;
-    }
+function isNotUndefined(value) {
+    return value !== undefined;
+}
+
+/**
+ *
+ * @param {string} program
+ * @returns {Array}
+ */
+function whichWithEnv(program) {
+    return which(program, process.env);
 }
 
 var args = parseArgv(process.argv.slice(2));
 
 // print usage
 if (args.programs.length === 0) {
-    console.log('usage: which [-a] PROGRAM...');
+    console.log('usage: which [-al] PROGRAM...');
     process.exit();
 }
 
-var paths = process.env.PATH.split(':').map(resolve),
-    outputAll = args.flags.indexOf('-a') !== -1,
-    output = {};
+var outputAllArray = args.flags.indexOf('-al') !== -1 || args.flags.indexOf('-la') !== -1,
+    outputAll = outputAllArray || args.flags.indexOf('-a') !== -1,
+    outputArray = outputAllArray || args.flags.indexOf('-l') !== -1;
 
-args.programs.forEach(function (program) {
-    var programPaths = paths.map(function (path) {
-        return pathUtil.join(path, program);
-    }).filter(exists);
+if (outputArray) {
+    var paths = args.programs
+        .map(whichWithEnv)
+        .map(function(paths){
+            if (outputAll) {
+                return paths;
+            }
+
+            return paths[0];
+        })
+        .filter(isNotUndefined)
+        .reduce(concat, []);
+
+    console.log(paths);
+    process.exit();
+}
+
+var programs = {};
+
+args.programs.forEach(function(program){
+    var paths = whichWithEnv(program);
 
     if (!outputAll) {
-        programPaths = programPaths[0];
+        paths = paths[0];
     }
 
-    output[program] = programPaths;
+    programs[program] = paths;
 });
 
-console.log(output);
+console.log(programs);
