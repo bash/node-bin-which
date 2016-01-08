@@ -11,6 +11,9 @@ cache:
   directories:
     - node_modules
 
+before_script:
+  - "export PATH=$PATH:node_modules/.bin"
+
 deploy:
   provider: npm
   email: ruben.schmidmeister@icloud.com
