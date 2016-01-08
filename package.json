@@ -10,7 +10,7 @@
     "which": "which.js"
   },
   "files": [
-    "README.md", "which.js"
+    "README.md", "which.js", "lib/which.js"
   ],
   "bugs": {
     "url": "https://github.com/bash/node-bin-which/issues",
